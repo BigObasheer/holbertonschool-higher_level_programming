@@ -9,12 +9,15 @@ int check_cycle(listint_t *list)
 {
 	listint_t *hare = list, *tor = list;
 
-	while(tor)
+	while (tor)
 	{
 		tor = tor->next;
-		hare = hare->next->next;
+		if (hare->next && hare->next->next)
+			hare = hare->next->next;
+		else
+			break;
 		if (tor == hare)
-			return(1);
+			return (1);
 	}
 	return (0);
 }
