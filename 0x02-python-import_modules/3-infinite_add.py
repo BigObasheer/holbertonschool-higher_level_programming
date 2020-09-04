@@ -1,10 +1,7 @@
 #!/usr/bin/python3
-def main():
-    import hidden_4
-    for objname in dir(hidden_4):
-        if objname[:2] == "__":
-            continue
-        print(objname)
-
+from sys import argv
 if __name__ == "__main__":
-    main()
+    result = 0
+    for i in range(1, len(argv)):
+        result += int(argv[i])
+    print(result)
