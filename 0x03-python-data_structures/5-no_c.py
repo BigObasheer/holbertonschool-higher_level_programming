@@ -5,5 +5,5 @@ def no_c(my_string):
     for i in my_string:
         if i == 'c' or i == 'C':
             continue
-        new += char
+        new += i
     return new
