@@ -15,7 +15,7 @@ class Rectangle:
 
     @property
     def width(self):
-        """ Defines width of rectangle
+        """ Defines width of rectangle.
             width must be an int and above 0
         """
         return self.__width
@@ -53,16 +53,20 @@ class Rectangle:
 
     def perimeter(self):
         """ returns the rectangle perimeter """
-         """ Perimeter of rectangle """
-        if self.__height is 0 or self.__width is 0:
+        if self.__width == 0 or self.__height == 0:
             return 0
-        return (self.__width * 2) + (self.__height * 2)
+
+        return 2 * (self.__width + self.__height)
 
     def __str__(self):
-        """ Str representation of rectangle """
-        new = ""
-        if self.__width is 0 or self.__height is 0:
-            return new
-        for i in range(self.__height):
-            new += (("#" * self.__width) + "\n")
-        return new[:-1]
+        """ returns string representation of class """
+        str = ""
+        if self.width == 0 or self.height == 0:
+            str += "\n"
+            return ""
+        else:
+            for i in range(self.height):
+                str += "#" * self.width
+                if i < self.height - 1:
+                    str += "\n"
+            return str
