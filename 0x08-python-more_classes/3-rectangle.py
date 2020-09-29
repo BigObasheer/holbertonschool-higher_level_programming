@@ -55,20 +55,4 @@ class Rectangle:
         """ returns the rectangle perimeter """
         if self.__width == 0 or self.__height == 0:
             return 0
-
-        return 2 * (self.__width + self.__height)
-
-    def __str__(self):
-        """ returns string representation of class """
-        str = ""
-        i = self.__height
-        j = self.__width
-        if i == 0 or j == 0:
-            return str
-
-        for i in range(i):
-            for j in range(j):
-                str += '#'
-            if i != i - 1:
-                str += '\n'
-        return str
+        return (2 * self.__width) + (2 * self.__height)
