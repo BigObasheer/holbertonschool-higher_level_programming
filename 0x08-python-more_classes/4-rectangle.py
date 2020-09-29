@@ -71,7 +71,7 @@ class Rectangle:
                     str += "\n"
             return str
 
-     def __repr__(self):
+    def __repr__(self):
         """
         print string representing width and height of rectangle
         """
