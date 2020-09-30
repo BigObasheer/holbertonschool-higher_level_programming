@@ -9,6 +9,9 @@ class Rectangle:
         height (int): height of rectangle
     """
 
+    number_of_instances = 0
+    print_symbol = '#'
+
     def __init__(self, width=0, height=0):
         self.width = width
         self.height = height
@@ -61,16 +64,16 @@ class Rectangle:
 
     def __str__(self):
         """ returns string representation of class """
-        str = ""
+        st = ""
         if self.width == 0 or self.height == 0:
-            str += "\n"
+            st += "\n"
             return ""
         else:
             for i in range(self.height):
-                str += "#" * self.width
-                if i < self.height - 1:
-                    str += "\n"
-            return str
+                st += str(self.print_symbol)
+                if i != self.height - 1:
+                    st += "\n"
+            return st
 
     def __repr__(self):
         """
@@ -85,3 +88,19 @@ class Rectangle:
         print("Bye rectangle...")
         Rectangle.number_of_instances -= 1
         del self
+
+    @staticmethod
+    def bigger_or_equal(rect_1, rect_2):
+        """ Returns biggest rectangle based on area """
+        if not isinstance(rect_1, Rectangle):
+            raise TypeError("rect_1 must be an instance of Rectangle")
+        if not isinstance(rect_2, Rectangle):
+            raise TypeError("rect_2 must be an instance of Rectangle")
+        if rect_1.area() >= rect_2.area():
+            return rect_1
+        return rect_2
+
+    @classmethod
+    def square(cls, size=0):
+        """ returns new rectangle instance with equal sizes """
+        return cls(size, size)
