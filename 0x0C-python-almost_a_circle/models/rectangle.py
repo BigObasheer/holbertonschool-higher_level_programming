@@ -1,4 +1,4 @@
-``#!/usr/bin/python3
+#!/usr/bin/python3
 """ Almost a Circle """
 from models.base import Base
 
@@ -64,4 +64,10 @@ class Rectangle(Base):
             self.__y = value
 
     def area(self):
-    
+        """ Area of a Rectangle """
+        return self.__height * self.__width
+
+    def display(self):
+        """ Display """
+        for i in range(self.__height):
+            print(" " * self.__x + "#" * self.__width)
