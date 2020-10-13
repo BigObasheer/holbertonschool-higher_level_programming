@@ -88,7 +88,7 @@ class Rectangle(Base):
     def update(self, *args, **kwargs):
         """ Update """
         if args:
-            attrs = ['id' , 'width', 'height', 'x', 'y']
+            attrs = ['id', 'width', 'height', 'x', 'y']
             for index in range(len(args)):
                 setattr(self, attrs[index], args[index])
         else:
