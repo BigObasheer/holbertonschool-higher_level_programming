@@ -6,6 +6,7 @@ from models.base import Base
 class Rectangle(Base):
     """ Class Rectangle that Inherits Base """
     def __init__(self, width, height, x=0, y=0, id=None):
+        """ Initialize """
         super().__init__(id)
         self.width = width
         self.height = height
@@ -73,6 +74,7 @@ class Rectangle(Base):
         return self.__height * self.__width
 
     def display(self):
+        """ Display """
         for height in range(self.__height):
             print(" " * self.__x, end="")
             print("#" * self.__width)
