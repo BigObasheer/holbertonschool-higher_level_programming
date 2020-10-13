@@ -83,10 +83,12 @@ class Rectangle(Base):
         r = r.format(self.id, self.__x, self.__y, self.__width, self.__height)
         return r
 
-    def update(self, *args):
+    def update(self, *args, **kwargs):
         """ Update """
-        self.__id = args[0]
-        self.__width = args[1]
-        self.__height = args[2]
-        self.__x = args[3]
-        self.__y = args[4]
+        attrs = ['id' , 'width', 'height', 'x', 'y']
+        if args:
+            for index in range(len(args)):
+                setattr(self, attrs[index], args[index])
+        else:
+            for index in range(len(kwargs)):
+                setattr(self, attrs[index], kwargs[index], kwargs.values())
