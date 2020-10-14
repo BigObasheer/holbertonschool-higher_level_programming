@@ -51,3 +51,14 @@ class Base:
             return None
         ins.update(**dictionary)
         return ins
+
+    @classmethod
+    def load_from_file(cls):
+        """ returns a list of instances """
+        try:
+            with open(cls.__name__ + ".json", "r") as f:
+                buff = f.read()
+        except:
+            return []
+        dicts_list = cls.from_json_string(buff)
+        return [cls.create(**inst) for inst in dicts_list]
