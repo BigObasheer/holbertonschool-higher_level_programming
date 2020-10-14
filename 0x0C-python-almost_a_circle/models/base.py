@@ -62,3 +62,52 @@ class Base:
             return []
         dicts_list = cls.from_json_string(buff)
         return [cls.create(**inst) for inst in dicts_list]
+
+    @classmethod
+    def save_to_file_csv(cls, list_objs):
+        """ Serializes in CSV """
+        filename = cls.__name__ + ".csv"
+        s_d = []
+
+        try:
+            with open(filename, 'w') as csvfile:
+                if list_objs is not None and type(list_objs) is list:
+                    if cls.__name__ == "Rectangle":
+                        fields = ['id', 'width', 'height', 'x', 'y']
+                    elif cls.__name__ == "Square":
+                        fields = ['id', 'size', 'x', 'y']
+
+                    for objects in list_objs:
+                        s_d.append(objects.to_dictionary())
+
+                    writer = csv.DictWriter(csvfile, fieldnames=fields)
+                    writer.writeheader()
+                    for dictionaries in s_d:
+                        writer.writerow(dictionaries)
+
+                else:
+                    with open(filename, 'w') as csvfile:
+                        csvfile.write("[]")
+
+        except FileNotFoundError:
+            with open(filename, "w") as csvfile:
+                csvfile.write("[]")
+
+    @classmethod
+    def load_from_file_csv(cls):
+        """ Deserializes in CSV """
+        filename = cls.__name__ + ".csv"
+        instance_list = []
+
+        try:
+            with open(filename) as csv_file:
+                python_list_of_dictionaries = csv.DictReader(csv_file)
+
+                for elements in python_list_of_dictionaries:
+                    for values in elements:
+                        elements[values] = int(elements[values])
+                    instance_list.append(cls.create(**elements))
+                return instance_list
+
+        except FileNotFoundError:
+            return []
