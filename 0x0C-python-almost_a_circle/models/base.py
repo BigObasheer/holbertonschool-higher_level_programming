@@ -24,13 +24,14 @@ class Base:
         return to_json(li_of_dict) if type(li_of_dict) is list else '[]'
 
     @classmethod
-    def save_to_file(cls, list_objs):
+    def save_to_file(cls, list_ob):
         """ Saves to File """
-        buff = []
-        if buff is not None:
-            buff = [x.to_dictionary() for x in list_objs]
-            with open(cls.__name__ + ".json", "w") as f:
-                f.write(cls.to_json_string(buff))
+        with open(cls.__name__ + ".json", "w", encoding="utf-8") as f:
+            if list_ob is None:
+                f.write("[]")
+            else:
+                f.write(cls.to_json_string([i.to_dictionary() for i
+                        in list_ob]))
 
     @staticmethod
     def from_json_string(json_string):
@@ -38,3 +39,15 @@ class Base:
         if json_string is None or json_string == "[]":
             return []
         return json.loads(json_string)
+
+    @classmethod
+    def create(cls, **dictionary):
+        """ Create an Instance of the Class """
+        if cls.__name__ == "Rectangle":
+            ins = cls(1, 1)
+        elif cls.__name__ == "Square":
+            ins = cls(1)
+        else:
+            return None
+        ins.update(**dictionary)
+        return ins
