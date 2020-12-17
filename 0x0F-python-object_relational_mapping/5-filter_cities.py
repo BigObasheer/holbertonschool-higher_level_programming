@@ -10,19 +10,13 @@ if __name__ == "__main__":
 
     find = db.cursor()
 
-    find.execute("SELECT cities.name\
-                    FROM cities JOIN states\
-                    ON cities.state_id = states.id\
-                    WHERE states.name=%s\
-                    ORDER BY states.id ASC;", (search,))
+    find.execute("""SELECT cities.name FROM cities
+        JOIN states ON cities.state_id = states.id
+        WHERE states.name=%s
+        ORDER BY 'cities.id' ASC;""", (search,) )
 
     data = find.fetchall()
-
-    for cities in range(len(data)):
-        print(data[cities][0], end='')
-        if cities < len(data) - 1:
-            print(', ', end='')
-    print()
+    print(", ".join(row[0] for row in data))
 
     find.close()
     db.close()
