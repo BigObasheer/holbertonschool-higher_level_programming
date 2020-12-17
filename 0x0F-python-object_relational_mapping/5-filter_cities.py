@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-# Print all cities
+# Filter cities
 import MySQLdb
 from sys import argv
 
