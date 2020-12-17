@@ -4,13 +4,9 @@ import MySQLdb
 from sys import argv
 
 if __name__ == "__main__":
-    db = MySQLdb.connect(
-        host='localhost',
-        port=3306,
-        user=argv[1],
-        passwd=argv[2],
-        db=argv[3]
-    )
+
+    user, passwd, database, search = argv[1], argv[2], argv[3], argv[4]
+    db = MySQLdb.connect('localhost', user, passwd, database)
 
     find = db.cursor()
 
