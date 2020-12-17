@@ -1,11 +1,12 @@
 #!/usr/bin/python3
-# Print all cities
-import MySQLdb
+""" Lists all cities """
 from sys import argv
+import MySQLdb
+
 
 if __name__ == "__main__":
 
-    user, passwd, database, search = argv[1], argv[2], argv[3], argv[4]
+    user, passwd, database = argv[1], argv[2], argv[3]
     db = MySQLdb.connect('localhost', user, passwd, database)
 
     find = db.cursor()
@@ -15,7 +16,6 @@ if __name__ == "__main__":
                     ON cities.state_id=states.id")
 
     data = find.fetchall()
-
     for cities in data:
         print(cities)
 
