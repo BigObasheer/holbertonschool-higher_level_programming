@@ -16,7 +16,7 @@ if __name__ == "__main__":
                     WHERE states.name=%s\
                     ORDER BY states.id ASC;", (search,))
 
-    data = lookup.fetchall()
+    data = find.fetchall()
 
     for cities in range(len(data)):
         print(data[cities][0], end='')
