@@ -17,5 +17,5 @@ if __name__ == "__main__":
     for state in data:
         print(state)
 
-    lookup.close()
+    find.close()
     db.close()
