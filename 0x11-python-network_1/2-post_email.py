@@ -5,9 +5,7 @@ import urllib.request
 import urllib.parse
 
 
-
 if __name__ == "__main__":
-    data = urlib.parse.urlencode({"email": argv[2]}).encode()
-    with urlib.request.urlopen(argv[1], data) as f:
+    data = urllib.parse.urlencode({"email": argv[2]}).encode()
+    with urllib.request.urlopen(argv[1], data) as f:
         print(f.read().decode('utf-8'))
-
