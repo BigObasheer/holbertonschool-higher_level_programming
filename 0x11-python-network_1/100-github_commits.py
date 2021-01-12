@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""A WILD COMMENT APPEARS"""
+""" Get ID from github """
 from sys import argv
 import requests
 
